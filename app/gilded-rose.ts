@@ -75,6 +75,10 @@ export class GildedRose {
         new EventTicketItem(this.items[i]).update();
         continue;
       }
+      if (this.items[i].name == 'Aged Brie') {
+        new FineAgingItem(this.items[i]).update();
+        continue;
+      }
       if (this.items[i].name != 'Aged Brie') {
         if (this.items[i].quality > 0) {
           this.items[i].quality = this.items[i].quality - 1
