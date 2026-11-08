@@ -31,8 +31,14 @@ export class Catalog {
 class LegendaryItem {
   constructor(private readonly item: Item) {}
 
+  static handles(item: Item) {
+    return item.name == 'Sulfuras, Hand of Ragnaros';
+  }
+
   update() {}
 }
+
+Catalog.register(LegendaryItem);
 
 class EventTicketItem {
   constructor(private readonly item: Item) {}
@@ -92,10 +98,6 @@ export class GildedRose {
       const identified = Catalog.identify(this.items[i]);
       if (identified) {
         identified.update();
-        continue;
-      }
-      if (this.items[i].name == 'Sulfuras, Hand of Ragnaros') {
-        new LegendaryItem(this.items[i]).update();
         continue;
       }
       if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
