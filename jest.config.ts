@@ -4,8 +4,10 @@ import { compilerOptions } from './tsconfig.json'
 export default {
   roots: ['<rootDir>/app', '<rootDir>/test/jest'],
   collectCoverage: true,
+  collectCoverageFrom: ['app/**/*.ts'],
   coverageDirectory: 'coverage',
-  coverageProvider: 'v8',
+  coverageProvider: 'babel',
+  coverageReporters: ['text', 'lcov', 'json-summary'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },

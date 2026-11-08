@@ -22,6 +22,14 @@ To run all tests in watch mode
 npm run test:jest:watch
 ```
 
+To run all tests with a coverage report in `coverage/`
+
+```sh
+npm run test:coverage
+```
+
+Pull requests run the tests in CI, attach the report to the run, and post the results as a comment.
+
 
 ## Run the TextTest fixture from the Command-Line
 
