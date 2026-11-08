@@ -57,5 +57,45 @@ describe('Gilded Rose', () => {
     it('lowers sellIn below 0 once the concert has passed', () => {
       expect(updatedPass(0, 20).sellIn).toBe(-1);
     });
+
+    it('gains 1 quality with more than 10 days left', () => {
+      expect(updatedPass(11, 20).quality).toBe(21);
+    });
+
+    it('gains 2 quality with 10 days left', () => {
+      expect(updatedPass(10, 20).quality).toBe(22);
+    });
+
+    it('gains 2 quality with 6 days left', () => {
+      expect(updatedPass(6, 20).quality).toBe(22);
+    });
+
+    it('gains 3 quality with 5 days left', () => {
+      expect(updatedPass(5, 20).quality).toBe(23);
+    });
+
+    it('gains 3 quality with 1 day left', () => {
+      expect(updatedPass(1, 20).quality).toBe(23);
+    });
+
+    it('drops quality to 0 once the concert has passed', () => {
+      expect(updatedPass(0, 20).quality).toBe(0);
+    });
+
+    it('stays at 0 quality after the concert', () => {
+      expect(updatedPass(-1, 0).quality).toBe(0);
+    });
+
+    it('stays at 50 quality with more than 10 days left', () => {
+      expect(updatedPass(11, 50).quality).toBe(50);
+    });
+
+    it('caps quality at 50 when gaining 2', () => {
+      expect(updatedPass(10, 49).quality).toBe(50);
+    });
+
+    it('caps quality at 50 when gaining 3', () => {
+      expect(updatedPass(5, 48).quality).toBe(50);
+    });
   });
 });
