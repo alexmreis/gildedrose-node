@@ -14,10 +14,11 @@ class EventTicketItem {
 
     if (sellIn <= 0) {
       this.item.quality = 0;
-      return;
+      return this.item;
     }
 
     this.item.quality = Math.min(50, this.item.quality + this.anticipation(sellIn));
+    return this.item;
   }
 
   private anticipation(sellIn: number) {

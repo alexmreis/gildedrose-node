@@ -207,6 +207,7 @@ describe('Gilded Rose', () => {
 
         update() {
           this.item.quality = setsQualityTo;
+          return this.item;
         }
       };
     }

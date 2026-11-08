@@ -21,10 +21,6 @@ export class GildedRose {
   }
 
   updateQuality() {
-    for (let i = 0; i < this.items.length; i++) {
-      Catalog.identify(this.items[i]).update();
-    }
-
-    return this.items;
+    return this.items.map(item => Catalog.identify(item).update());
   }
 }
