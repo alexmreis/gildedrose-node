@@ -144,4 +144,22 @@ describe('Gilded Rose', () => {
       expect(updatedBrie(-1, 49).quality).toBe(50);
     });
   });
+
+  describe('Normal Items', () => {
+    function updatedVest(sellIn: number, quality: number) {
+      const vest = new Item('+5 Dexterity Vest', sellIn, quality);
+
+      new GildedRose([vest]).updateQuality();
+
+      return vest;
+    }
+
+    it('lowers sellIn by 1', () => {
+      expect(updatedVest(5, 10).sellIn).toBe(4);
+    });
+
+    it('lowers sellIn below 0 once the Sell By Date has passed', () => {
+      expect(updatedVest(0, 10).sellIn).toBe(-1);
+    });
+  });
 });
