@@ -52,6 +52,8 @@ export class GildedRose {
       }
       if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
         this.items[i].sellIn = this.items[i].sellIn - 1;
+      } else {
+        new LegendaryItem(this.items[i]).update();
       }
       if (this.items[i].sellIn < 0) {
         if (this.items[i].name != 'Aged Brie') {
