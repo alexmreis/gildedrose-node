@@ -1,4 +1,4 @@
-import { Catalog } from '../catalog';
+import { Catalog, ItemKind } from '../catalog';
 import type { Item } from '../gilded-rose';
 
 class ConjuredItem {
@@ -11,7 +11,7 @@ class ConjuredItem {
   update() {
     this.item.sellIn = this.item.sellIn - 1;
     const loss = this.item.sellIn < 0 ? 4 : 2;
-    this.item.quality = Math.max(0, this.item.quality - loss);
+    this.item.quality = Math.max(ItemKind.MIN_QUALITY, this.item.quality - loss);
     return this.item;
   }
 }

@@ -1,3 +1,4 @@
+import { ItemKind } from '../catalog';
 import type { Item } from '../gilded-rose';
 
 export class NormalItem {
@@ -6,7 +7,7 @@ export class NormalItem {
   update() {
     this.item.sellIn = this.item.sellIn - 1;
     const loss = this.item.sellIn < 0 ? 2 : 1;
-    this.item.quality = Math.max(0, this.item.quality - loss);
+    this.item.quality = Math.max(ItemKind.MIN_QUALITY, this.item.quality - loss);
     return this.item;
   }
 }

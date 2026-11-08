@@ -17,7 +17,7 @@ describe('Catalog', () => {
     };
   }
 
-  it('updates items through a newly registered kind', () => {
+  it('wraps the item in a decorator of the correct ItemKind', () => {
     Catalog.register(fakeKind({ handles: 'Test Relic', setsQualityTo: 99 }));
     const relic = new Item('Test Relic', 5, 10);
 
