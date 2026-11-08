@@ -22,7 +22,7 @@ describe('Normal Items', () => {
       expect(updatedVest(5, 10).quality).toBe(9);
     });
 
-    it('loses 1 quality with 1 day left', () => {
+    it('loses 1 quality with Sell In at 1', () => {
       expect(updatedVest(1, 10).quality).toBe(9);
     });
 
