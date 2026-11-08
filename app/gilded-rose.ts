@@ -89,15 +89,7 @@ export class GildedRose {
         new FineAgingItem(this.items[i]).update();
         continue;
       }
-      if (this.items[i].quality > 0) {
-        this.items[i].quality = this.items[i].quality - 1
-      }
-      this.items[i].sellIn = this.items[i].sellIn - 1;
-      if (this.items[i].sellIn < 0) {
-        if (this.items[i].quality > 0) {
-          this.items[i].quality = this.items[i].quality - 1
-        }
-      }
+      new NormalItem(this.items[i]).update();
     }
 
     return this.items;
