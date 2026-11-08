@@ -26,7 +26,7 @@ describe('Conjured Items', () => {
       expect(updated(5, 1).quality).toBe(0);
     });
 
-    it('loses 2 quality with 1 day left', () => {
+    it('loses 2 quality with Sell In at 1', () => {
       expect(updated(1, 10).quality).toBe(8);
     });
 

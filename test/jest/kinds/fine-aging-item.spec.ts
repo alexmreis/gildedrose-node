@@ -22,7 +22,7 @@ describe('Fine Aging Items', () => {
       expect(updatedBrie(2, 0).quality).toBe(1);
     });
 
-    it('gains 1 quality with 1 day left', () => {
+    it('gains 1 quality with Sell In at 1', () => {
       expect(updatedBrie(1, 0).quality).toBe(1);
     });
 
