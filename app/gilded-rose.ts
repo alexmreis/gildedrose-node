@@ -1,4 +1,5 @@
 import { Catalog } from './catalog';
+import './kinds';
 
 export class Item {
   name: string;
@@ -11,18 +12,6 @@ export class Item {
     this.quality = quality;
   }
 }
-
-class LegendaryItem {
-  constructor(private readonly item: Item) {}
-
-  static handles(item: Item) {
-    return item.name == 'Sulfuras, Hand of Ragnaros';
-  }
-
-  update() {}
-}
-
-Catalog.register(LegendaryItem);
 
 class EventTicketItem {
   constructor(private readonly item: Item) {}
