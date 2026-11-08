@@ -231,4 +231,40 @@ describe('Gilded Rose', () => {
       expect(relic.quality).toBe(1);
     });
   });
+
+  describe('returned items', () => {
+    function returnedFor(item: Item) {
+      return new GildedRose([item]).updateQuality()[0];
+    }
+
+    it('returns the same Legendary Item', () => {
+      const sulfuras = new Item('Sulfuras, Hand of Ragnaros', 5, 80);
+
+      expect(returnedFor(sulfuras)).toBe(sulfuras);
+    });
+
+    it('returns the same Event Ticket before the concert', () => {
+      const pass = new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20);
+
+      expect(returnedFor(pass)).toBe(pass);
+    });
+
+    it('returns the same Event Ticket after the concert', () => {
+      const pass = new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20);
+
+      expect(returnedFor(pass)).toBe(pass);
+    });
+
+    it('returns the same Fine Aging Item', () => {
+      const brie = new Item('Aged Brie', 2, 0);
+
+      expect(returnedFor(brie)).toBe(brie);
+    });
+
+    it('returns the same Normal Item', () => {
+      const vest = new Item('+5 Dexterity Vest', 5, 10);
+
+      expect(returnedFor(vest)).toBe(vest);
+    });
+  });
 });
