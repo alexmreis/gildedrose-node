@@ -43,6 +43,10 @@ Catalog.register(LegendaryItem);
 class EventTicketItem {
   constructor(private readonly item: Item) {}
 
+  static handles(item: Item) {
+    return item.name == 'Backstage passes to a TAFKAL80ETC concert';
+  }
+
   update() {
     const sellIn = this.item.sellIn;
     this.item.sellIn = sellIn - 1;
@@ -65,6 +69,8 @@ class EventTicketItem {
     return 1;
   }
 }
+
+Catalog.register(EventTicketItem);
 
 class FineAgingItem {
   constructor(private readonly item: Item) {}
@@ -98,10 +104,6 @@ export class GildedRose {
       const identified = Catalog.identify(this.items[i]);
       if (identified) {
         identified.update();
-        continue;
-      }
-      if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
-        new EventTicketItem(this.items[i]).update();
         continue;
       }
       if (this.items[i].name == 'Aged Brie') {
