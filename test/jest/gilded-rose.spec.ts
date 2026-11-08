@@ -1,4 +1,5 @@
-import { Catalog, Item, GildedRose } from '@/gilded-rose';
+import { Catalog } from '@/catalog';
+import { Item, GildedRose } from '@/gilded-rose';
 
 describe('Gilded Rose', () => {
   it('keeps Sulfuras quality constant over time', () => {
