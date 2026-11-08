@@ -34,6 +34,13 @@ describe('Normal Items', () => {
       expect(updatedVest(-1, 10).quality).toBe(8);
     });
 
+    it.each([
+      [50, 49],
+      [49, 48],
+    ])('loses 1 quality from %i to %i before its Sell By Date', (quality, expected) => {
+      expect(updatedVest(5, quality).quality).toBe(expected);
+    });
+
     it('loses its last point of quality before its Sell By Date', () => {
       expect(updatedVest(5, 1).quality).toBe(0);
     });
