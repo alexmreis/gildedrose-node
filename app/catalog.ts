@@ -2,7 +2,7 @@ import type { Item } from './gilded-rose';
 import { NormalItem } from './kinds/normal-item';
 
 type ItemKind = {
-  new (item: Item): { update(): void };
+  new (item: Item): { update(): Item };
   handles(item: Item): boolean;
 };
 

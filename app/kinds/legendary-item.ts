@@ -8,7 +8,9 @@ class LegendaryItem {
     return item.name == 'Sulfuras, Hand of Ragnaros';
   }
 
-  update() {}
+  update() {
+    return this.item;
+  }
 }
 
 Catalog.register(LegendaryItem);
