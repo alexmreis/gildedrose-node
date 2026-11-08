@@ -8,6 +8,7 @@ describe('Gilded Rose', () => {
         new Item('Backstage passes to a TAFKAL80ETC concert', 15, 20),
         new Item('Aged Brie', 2, 0),
         new Item('+5 Dexterity Vest', 10, 20),
+        new Item('Conjured Mana Cake', 3, 6),
       ];
       const gildedRose = new GildedRose(items);
 

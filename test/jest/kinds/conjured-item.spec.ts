@@ -34,6 +34,22 @@ describe('Conjured Items', () => {
       expect(updated(-1, 1).quality).toBe(0);
     });
 
+    it('loses 2 quality for a Conjured Aged Brie', () => {
+      const brie = new Item('Conjured Aged Brie', 2, 10);
+
+      new GildedRose([brie]).updateQuality();
+
+      expect(brie.quality).toBe(8);
+    });
+
+    it('loses 2 quality for a Conjured Sulfuras', () => {
+      const sulfuras = new Item('Conjured Sulfuras, Hand of Ragnaros', 5, 80);
+
+      new GildedRose([sulfuras]).updateQuality();
+
+      expect(sulfuras.quality).toBe(78);
+    });
+
     it('returns the same Conjured Item', () => {
       const cake = new Item('Conjured Mana Cake', 5, 10);
 
