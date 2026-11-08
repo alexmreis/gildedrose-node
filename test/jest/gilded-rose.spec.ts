@@ -40,4 +40,22 @@ describe('Gilded Rose', () => {
 
     expect(sulfuras.sellIn).toBe(5);
   });
+
+  describe('Backstage passes', () => {
+    function updatedPass(sellIn: number, quality: number) {
+      const pass = new Item('Backstage passes to a TAFKAL80ETC concert', sellIn, quality);
+
+      new GildedRose([pass]).updateQuality();
+
+      return pass;
+    }
+
+    it('lowers sellIn by 1', () => {
+      expect(updatedPass(15, 20).sellIn).toBe(14);
+    });
+
+    it('lowers sellIn below 0 once the concert has passed', () => {
+      expect(updatedPass(0, 20).sellIn).toBe(-1);
+    });
+  });
 });
