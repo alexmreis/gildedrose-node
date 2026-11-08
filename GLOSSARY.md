@@ -19,7 +19,7 @@ The day an Item should be sold by. It has passed once Sell In is below 0.
 _Avoid_: Expiry date
 
 **Quality**:
-How valuable an Item is, normally from 0 to 50.
+How valuable an Item is, from 0 to 50. Only a Legendary Item can be above 50.
 _Avoid_: Value, price
 
 **Daily Update**:
@@ -39,6 +39,10 @@ _Avoid_: Unique item
 **Event Ticket**:
 An Item that gains Quality faster as its event approaches and is worth 0 once the event has passed. Backstage passes are the only one.
 _Avoid_: Pass, concert ticket
+
+**Anticipation**:
+How much an Event Ticket's Quality rises each day as its event nears.
+_Avoid_: Hype, demand
 
 **Fine Aging Item**:
 An Item that gains Quality as it gets older, twice as fast once its Sell By Date has passed. Aged Brie is the only one the inn carries today.
