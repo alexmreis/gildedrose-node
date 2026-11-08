@@ -12,8 +12,6 @@ npm install
 
 ## Run the unit tests from the Command-Line
 
-There are two unit test frameworks to choose from, Jest and Mocha.
-
 ```sh
 npm run test:jest
 ```
@@ -22,12 +20,6 @@ To run all tests in watch mode
 
 ```sh
 npm run test:jest:watch
-```
-
-Mocha
-
-```sh
-npm run test:mocha
 ```
 
 
