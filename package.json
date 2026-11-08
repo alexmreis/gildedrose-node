@@ -4,7 +4,7 @@
   "description": "Gilded Rose kata in TypeScript",
   "scripts": {
     "precompile": "rimraf app/**/*.js test/**/*.js",
-    "compile": "tsc",
+    "compile": "tsc --skipLibCheck --outDir dist",
     "pretest": "rimraf app/**/*.js test/**/*.js",
     "test:jest": "jest",
     "test:jest:watch": "jest --watchAll",
