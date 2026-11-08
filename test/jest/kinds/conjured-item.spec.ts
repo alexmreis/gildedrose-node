@@ -50,6 +50,10 @@ describe('Conjured Items', () => {
       expect(sulfuras.quality).toBe(78);
     });
 
+    it.each([5, -1])('stays at 0 quality with Sell In at %i', sellIn => {
+      expect(updated(sellIn, 0).quality).toBe(0);
+    });
+
     it('returns the same Conjured Item', () => {
       const cake = new Item('Conjured Mana Cake', 5, 10);
 

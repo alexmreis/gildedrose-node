@@ -27,4 +27,15 @@ describe('Gilded Rose', () => {
       expect(output).toMatchSnapshot();
     });
   });
+
+  describe('when several items are updated together', () => {
+    it('applies each item its own rules', () => {
+      const brie = new Item('Aged Brie', 2, 10);
+      const vest = new Item('+5 Dexterity Vest', 2, 10);
+
+      new GildedRose([brie, vest]).updateQuality();
+
+      expect([brie.quality, vest.quality]).toEqual([11, 9]);
+    });
+  });
 });

@@ -42,6 +42,10 @@ describe('Fine Aging Items', () => {
       expect(updatedBrie(-1, 50).quality).toBe(50);
     });
 
+    it('gains its last point of quality before its Sell By Date', () => {
+      expect(updatedBrie(2, 49).quality).toBe(50);
+    });
+
     it('caps quality at 50 when gaining 2', () => {
       expect(updatedBrie(-1, 49).quality).toBe(50);
     });
