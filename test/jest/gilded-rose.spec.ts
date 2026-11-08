@@ -161,5 +161,37 @@ describe('Gilded Rose', () => {
     it('lowers sellIn below 0 once the Sell By Date has passed', () => {
       expect(updatedVest(0, 10).sellIn).toBe(-1);
     });
+
+    it('loses 1 quality before its Sell By Date', () => {
+      expect(updatedVest(5, 10).quality).toBe(9);
+    });
+
+    it('loses 1 quality with 1 day left', () => {
+      expect(updatedVest(1, 10).quality).toBe(9);
+    });
+
+    it('loses 2 quality once the Sell By Date has passed', () => {
+      expect(updatedVest(0, 10).quality).toBe(8);
+    });
+
+    it('keeps losing 2 quality after the Sell By Date', () => {
+      expect(updatedVest(-1, 10).quality).toBe(8);
+    });
+
+    it('loses its last point of quality before its Sell By Date', () => {
+      expect(updatedVest(5, 1).quality).toBe(0);
+    });
+
+    it('bottoms out quality at 0 before its Sell By Date', () => {
+      expect(updatedVest(5, 0).quality).toBe(0);
+    });
+
+    it('bottoms out quality at 0 after its Sell By Date', () => {
+      expect(updatedVest(-1, 0).quality).toBe(0);
+    });
+
+    it('bottoms out quality at 0 when losing 2', () => {
+      expect(updatedVest(-1, 1).quality).toBe(0);
+    });
   });
 });
