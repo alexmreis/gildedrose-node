@@ -56,15 +56,9 @@ class NormalItem {
   constructor(private readonly item: Item) {}
 
   update() {
-    if (this.item.quality > 0) {
-      this.item.quality = this.item.quality - 1
-    }
     this.item.sellIn = this.item.sellIn - 1;
-    if (this.item.sellIn < 0) {
-      if (this.item.quality > 0) {
-        this.item.quality = this.item.quality - 1
-      }
-    }
+    const loss = this.item.sellIn < 0 ? 2 : 1;
+    this.item.quality = Math.max(0, this.item.quality - loss);
   }
 }
 
