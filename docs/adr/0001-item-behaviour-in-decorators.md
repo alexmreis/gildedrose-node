@@ -1,6 +1,6 @@
 # Item behaviour lives in decorators around Item
 
-`GildedRose.updateQuality` was one conditional covering every kind of Item. Each kind's rules now live in their own class with an `update()` method (`LegendaryItem`, `EventTicketItem`, `FineAgingItem`, `NormalItem`) that wraps an `Item` rather than extending it. `Item` and the `items` property belong to the goblin and must not change, so our behaviour can't depend on an inheritance tree rooted in `Item`.
+`GildedRose.updateQuality` was one conditional covering every kind of Item. Each kind's rules now live in their own class with an `update()` method (`LegendaryItem`, `EventTicketItem`, `FineAgingItem`, `ConjuredItem`, `NormalItem`) that wraps an `Item` rather than extending it. `Item` and the `items` property belong to the goblin and must not change, so our behaviour can't depend on an inheritance tree rooted in `Item`.
 
 ## Considered Options
 
