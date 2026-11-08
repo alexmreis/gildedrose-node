@@ -218,5 +218,15 @@ describe('Gilded Rose', () => {
 
       expect(relic.quality).toBe(99);
     });
+
+    it('uses the first registered kind that handles an item', () => {
+      Catalog.register(kindSetting('Contested Relic', 1));
+      Catalog.register(kindSetting('Contested Relic', 2));
+      const relic = new Item('Contested Relic', 5, 10);
+
+      new GildedRose([relic]).updateQuality();
+
+      expect(relic.quality).toBe(1);
+    });
   });
 });
