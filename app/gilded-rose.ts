@@ -1,4 +1,4 @@
-import { NormalItem } from './kinds/normal-item';
+import { Catalog } from './catalog';
 
 export class Item {
   name: string;
@@ -9,24 +9,6 @@ export class Item {
     this.name = name;
     this.sellIn = sellIn;
     this.quality = quality;
-  }
-}
-
-type ItemKind = {
-  new (item: Item): { update(): void };
-  handles(item: Item): boolean;
-};
-
-export class Catalog {
-  private static kinds: ItemKind[] = [];
-
-  static register(kind: ItemKind) {
-    Catalog.kinds.push(kind);
-  }
-
-  static identify(item: Item) {
-    const Kind = Catalog.kinds.find(kind => kind.handles(item)) ?? NormalItem;
-    return new Kind(item);
   }
 }
 
