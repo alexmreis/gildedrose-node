@@ -196,22 +196,22 @@ describe('Gilded Rose', () => {
   });
 
   describe('Catalog', () => {
-    function kindSetting(name: string, quality: number) {
+    function fakeKind({ handles, setsQualityTo }: { handles: string; setsQualityTo: number }) {
       return class {
         constructor(private readonly item: Item) {}
 
         static handles(item: Item) {
-          return item.name == name;
+          return item.name == handles;
         }
 
         update() {
-          this.item.quality = quality;
+          this.item.quality = setsQualityTo;
         }
       };
     }
 
     it('updates items through a newly registered kind', () => {
-      Catalog.register(kindSetting('Test Relic', 99));
+      Catalog.register(fakeKind({ handles: 'Test Relic', setsQualityTo: 99 }));
       const relic = new Item('Test Relic', 5, 10);
 
       new GildedRose([relic]).updateQuality();
@@ -220,8 +220,8 @@ describe('Gilded Rose', () => {
     });
 
     it('uses the first registered kind that handles an item', () => {
-      Catalog.register(kindSetting('Contested Relic', 1));
-      Catalog.register(kindSetting('Contested Relic', 2));
+      Catalog.register(fakeKind({ handles: 'Contested Relic', setsQualityTo: 1 }));
+      Catalog.register(fakeKind({ handles: 'Contested Relic', setsQualityTo: 2 }));
       const relic = new Item('Contested Relic', 5, 10);
 
       new GildedRose([relic]).updateQuality();
