@@ -1,0 +1,70 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: npm install
+
+      - run: npm run test:coverage -- --ci
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
+
+      - name: Post coverage to the pull request
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            const marker = '<!-- coverage-report -->';
+            const summary = JSON.parse(fs.readFileSync('coverage/coverage-summary.json', 'utf8'));
+            const row = (name, c) =>
+              `| ${name} | ${c.statements.pct}% | ${c.branches.pct}% | ${c.functions.pct}% | ${c.lines.pct}% |`;
+            const files = Object.entries(summary)
+              .filter(([file]) => file !== 'total')
+              .map(([file, c]) => row(`\`${file.replace(`${process.cwd()}/`, '')}\``, c));
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              marker,
+              '## Coverage',
+              '',
+              '| File | Statements | Branches | Functions | Lines |',
+              '| --- | --- | --- | --- | --- |',
+              row('**Total**', summary.total),
+              ...files,
+              '',
+              `Full report: \`coverage-report\` artifact on [this run](${runUrl}).`,
+            ].join('\n');
+
+            const issue_number = context.issue.number;
+            const { data: comments } = await github.rest.issues.listComments({
+              ...context.repo,
+              issue_number,
+              per_page: 100,
+            });
+            const existing = comments.find(comment => comment.body.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({ ...context.repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ ...context.repo, issue_number, body });
+            }
