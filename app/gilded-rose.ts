@@ -53,6 +53,10 @@ export class GildedRose {
         new LegendaryItem(this.items[i]).update();
         continue;
       }
+      if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
+        new EventTicketItem(this.items[i]).update();
+        continue;
+      }
       if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
         if (this.items[i].quality > 0) {
           this.items[i].quality = this.items[i].quality - 1
