@@ -39,6 +39,15 @@ npm run test:coverage
 Pull requests run the tests in CI, attach the report to the run, and post the results as a comment.
 
 
+## Lint and format
+
+```sh
+npm run lint
+npm run format
+```
+
+A pre-commit hook also lints and formats your staged files.
+
 ## Run the TextTest fixture from the Command-Line
 
 ```sh
