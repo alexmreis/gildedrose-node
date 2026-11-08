@@ -1,4 +1,4 @@
-import { Catalog } from '../catalog';
+import { Catalog, ItemKind } from '../catalog';
 import type { Item } from '../gilded-rose';
 
 const ITEM_NAMES = ['Backstage passes to a TAFKAL80ETC concert'];
@@ -15,11 +15,11 @@ class EventTicketItem {
     this.item.sellIn = sellIn - 1;
 
     if (sellIn <= 0) {
-      this.item.quality = 0;
+      this.item.quality = ItemKind.MIN_QUALITY;
       return this.item;
     }
 
-    this.item.quality = Math.min(50, this.item.quality + this.anticipation(sellIn));
+    this.item.quality = Math.min(ItemKind.MAX_QUALITY, this.item.quality + this.anticipation(sellIn));
     return this.item;
   }
 

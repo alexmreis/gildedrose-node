@@ -1,4 +1,4 @@
-import { Catalog } from '../catalog';
+import { Catalog, ItemKind } from '../catalog';
 import type { Item } from '../gilded-rose';
 
 const ITEM_NAMES = ['Aged Brie'];
@@ -13,7 +13,7 @@ class FineAgingItem {
   update() {
     this.item.sellIn = this.item.sellIn - 1;
     const gain = this.item.sellIn < 0 ? 2 : 1;
-    this.item.quality = Math.min(50, this.item.quality + gain);
+    this.item.quality = Math.min(ItemKind.MAX_QUALITY, this.item.quality + gain);
     return this.item;
   }
 }
