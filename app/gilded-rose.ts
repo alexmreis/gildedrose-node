@@ -23,6 +23,11 @@ class EventTicketItem {
     const sellIn = this.item.sellIn;
     this.item.sellIn = sellIn - 1;
 
+    if (sellIn <= 0) {
+      this.item.quality = 0;
+      return;
+    }
+
     if (this.item.quality < 50) {
       this.item.quality = this.item.quality + 1
       if (sellIn < 11) {
@@ -35,9 +40,6 @@ class EventTicketItem {
           this.item.quality = this.item.quality + 1
         }
       }
-    }
-    if (sellIn <= 0) {
-      this.item.quality = this.item.quality - this.item.quality
     }
   }
 }
