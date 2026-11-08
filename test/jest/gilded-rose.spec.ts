@@ -17,4 +17,13 @@ describe('Gilded Rose', () => {
 
     expect(sulfuras.quality).toBe(80);
   });
+
+  it('keeps Sulfuras quality constant past its sell date', () => {
+    const sulfuras = new Item('Sulfuras, Hand of Ragnaros', -1, 80);
+    const gildedRose = new GildedRose([sulfuras]);
+
+    gildedRose.updateQuality();
+
+    expect(sulfuras.quality).toBe(80);
+  });
 });
