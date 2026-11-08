@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gilded Rose when 30 days have passed applies aging to update quality and sellIn 1`] = `
+"-------- day 0 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 15, 20
+Aged Brie, 2, 0
++5 Dexterity Vest, 10, 20
+
+-------- day 1 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 14, 21
+Aged Brie, 1, 1
++5 Dexterity Vest, 9, 19
+
+-------- day 2 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 13, 22
+Aged Brie, 0, 2
++5 Dexterity Vest, 8, 18
+
+-------- day 3 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 12, 23
+Aged Brie, -1, 4
++5 Dexterity Vest, 7, 17
+
+-------- day 4 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 11, 24
+Aged Brie, -2, 6
++5 Dexterity Vest, 6, 16
+
+-------- day 5 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 10, 25
+Aged Brie, -3, 8
++5 Dexterity Vest, 5, 15
+
+-------- day 6 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 9, 27
+Aged Brie, -4, 10
++5 Dexterity Vest, 4, 14
+
+-------- day 7 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 8, 29
+Aged Brie, -5, 12
++5 Dexterity Vest, 3, 13
+
+-------- day 8 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 7, 31
+Aged Brie, -6, 14
++5 Dexterity Vest, 2, 12
+
+-------- day 9 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 6, 33
+Aged Brie, -7, 16
++5 Dexterity Vest, 1, 11
+
+-------- day 10 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 5, 35
+Aged Brie, -8, 18
++5 Dexterity Vest, 0, 10
+
+-------- day 11 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 4, 38
+Aged Brie, -9, 20
++5 Dexterity Vest, -1, 8
+
+-------- day 12 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 3, 41
+Aged Brie, -10, 22
++5 Dexterity Vest, -2, 6
+
+-------- day 13 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 2, 44
+Aged Brie, -11, 24
++5 Dexterity Vest, -3, 4
+
+-------- day 14 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 1, 47
+Aged Brie, -12, 26
++5 Dexterity Vest, -4, 2
+
+-------- day 15 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, 0, 50
+Aged Brie, -13, 28
++5 Dexterity Vest, -5, 0
+
+-------- day 16 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -1, 0
+Aged Brie, -14, 30
++5 Dexterity Vest, -6, 0
+
+-------- day 17 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -2, 0
+Aged Brie, -15, 32
++5 Dexterity Vest, -7, 0
+
+-------- day 18 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -3, 0
+Aged Brie, -16, 34
++5 Dexterity Vest, -8, 0
+
+-------- day 19 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -4, 0
+Aged Brie, -17, 36
++5 Dexterity Vest, -9, 0
+
+-------- day 20 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -5, 0
+Aged Brie, -18, 38
++5 Dexterity Vest, -10, 0
+
+-------- day 21 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -6, 0
+Aged Brie, -19, 40
++5 Dexterity Vest, -11, 0
+
+-------- day 22 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -7, 0
+Aged Brie, -20, 42
++5 Dexterity Vest, -12, 0
+
+-------- day 23 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -8, 0
+Aged Brie, -21, 44
++5 Dexterity Vest, -13, 0
+
+-------- day 24 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -9, 0
+Aged Brie, -22, 46
++5 Dexterity Vest, -14, 0
+
+-------- day 25 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -10, 0
+Aged Brie, -23, 48
++5 Dexterity Vest, -15, 0
+
+-------- day 26 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -11, 0
+Aged Brie, -24, 50
++5 Dexterity Vest, -16, 0
+
+-------- day 27 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -12, 0
+Aged Brie, -25, 50
++5 Dexterity Vest, -17, 0
+
+-------- day 28 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -13, 0
+Aged Brie, -26, 50
++5 Dexterity Vest, -18, 0
+
+-------- day 29 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -14, 0
+Aged Brie, -27, 50
++5 Dexterity Vest, -19, 0
+
+-------- day 30 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+Backstage passes to a TAFKAL80ETC concert, -15, 0
+Aged Brie, -28, 50
++5 Dexterity Vest, -20, 0
+
+"
+`;
