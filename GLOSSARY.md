@@ -26,6 +26,10 @@ _Avoid_: Value, price
 The end-of-day change applied to every Item's Sell In and Quality.
 _Avoid_: Tick, quality update
 
+**Catalog**:
+The inn's record of the kinds of Item it carries.
+_Avoid_: Registry, factory, decorators
+
 ### Kinds of Item
 
 **Normal Item**:

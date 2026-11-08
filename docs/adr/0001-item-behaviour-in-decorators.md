@@ -11,4 +11,4 @@
 
 Decorators change the wrapped `Item` in place, because callers read results from their own `Item` objects.
 
-`updateQuality` picks one decorator per Item by exact name, once per Daily Update, and any other name gets `NormalItem`. Decorators don't wrap each other.
+Each Item gets one decorator per Daily Update, chosen as described in [ADR 0002](./0002-item-kinds-register-in-a-catalog.md). Decorators don't wrap each other.
