@@ -10,6 +10,24 @@ export class Item {
   }
 }
 
+type ItemKind = {
+  new (item: Item): { update(): void };
+  handles(item: Item): boolean;
+};
+
+export class Catalog {
+  private static kinds: ItemKind[] = [];
+
+  static register(kind: ItemKind) {
+    Catalog.kinds.push(kind);
+  }
+
+  static identify(item: Item) {
+    const Kind = Catalog.kinds.find(kind => kind.handles(item));
+    return Kind && new Kind(item);
+  }
+}
+
 class LegendaryItem {
   constructor(private readonly item: Item) {}
 
@@ -71,6 +89,11 @@ export class GildedRose {
 
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
+      const identified = Catalog.identify(this.items[i]);
+      if (identified) {
+        identified.update();
+        continue;
+      }
       if (this.items[i].name == 'Sulfuras, Hand of Ragnaros') {
         new LegendaryItem(this.items[i]).update();
         continue;

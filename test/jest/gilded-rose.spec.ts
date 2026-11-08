@@ -1,4 +1,4 @@
-import { Item, GildedRose } from '@/gilded-rose';
+import { Catalog, Item, GildedRose } from '@/gilded-rose';
 
 describe('Gilded Rose', () => {
   it('keeps Sulfuras quality constant over time', () => {
@@ -192,6 +192,31 @@ describe('Gilded Rose', () => {
 
     it('bottoms out quality at 0 when losing 2', () => {
       expect(updatedVest(-1, 1).quality).toBe(0);
+    });
+  });
+
+  describe('Catalog', () => {
+    function kindSetting(name: string, quality: number) {
+      return class {
+        constructor(private readonly item: Item) {}
+
+        static handles(item: Item) {
+          return item.name == name;
+        }
+
+        update() {
+          this.item.quality = quality;
+        }
+      };
+    }
+
+    it('updates items through a newly registered kind', () => {
+      Catalog.register(kindSetting('Test Relic', 99));
+      const relic = new Item('Test Relic', 5, 10);
+
+      new GildedRose([relic]).updateQuality();
+
+      expect(relic.quality).toBe(99);
     });
   });
 });
