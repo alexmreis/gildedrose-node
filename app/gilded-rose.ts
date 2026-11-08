@@ -23,8 +23,8 @@ export class Catalog {
   }
 
   static identify(item: Item) {
-    const Kind = Catalog.kinds.find(kind => kind.handles(item));
-    return Kind && new Kind(item);
+    const Kind = Catalog.kinds.find(kind => kind.handles(item)) ?? NormalItem;
+    return new Kind(item);
   }
 }
 
@@ -107,12 +107,7 @@ export class GildedRose {
 
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
-      const identified = Catalog.identify(this.items[i]);
-      if (identified) {
-        identified.update();
-        continue;
-      }
-      new NormalItem(this.items[i]).update();
+      Catalog.identify(this.items[i]).update();
     }
 
     return this.items;
