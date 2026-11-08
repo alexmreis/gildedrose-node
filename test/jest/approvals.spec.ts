@@ -2,7 +2,7 @@ import { Item, GildedRose } from '@/gilded-rose';
 
 /**
  * This unit test uses [Jest Snapshot](https://goo.gl/fbAQLP).
- * 
+ *
  * There are two test cases here with different styles:
  * <li>"foo" is more similar to the unit test from the 'Java' version
  * <li>"thirtyDays" is more similar to the TextTest from the 'Java' version
@@ -11,21 +11,20 @@ import { Item, GildedRose } from '@/gilded-rose';
  */
 
 describe('Gilded Rose Approval', () => {
-
   let gameConsoleOutput: string;
-  let originalConsoleLog: (message: any) => void;
-  let originalProcessArgv: string[]
+  let originalConsoleLog: (message: unknown) => void;
+  let originalProcessArgv: string[];
 
   function gameConsoleLog(msg: string) {
     if (msg) {
       gameConsoleOutput += msg;
     }
-    gameConsoleOutput += "\n";
+    gameConsoleOutput += '\n';
   }
 
   beforeEach(() => {
     // prepare capturing console.log to our own gameConsoleLog.
-    gameConsoleOutput = "";
+    gameConsoleOutput = '';
     originalConsoleLog = console.log;
     console.log = gameConsoleLog;
     originalProcessArgv = process.argv;
@@ -40,15 +39,15 @@ describe('Gilded Rose Approval', () => {
   it('should foo', () => {
     const gildedRose = new GildedRose([new Item('foo', 0, 0)]);
     const items = gildedRose.updateQuality();
-  
+
     expect(items).toMatchSnapshot();
   });
 
   it('should thirtyDays', () => {
-    process.argv = ["<node>", "<script", "30"];
+    process.argv = ['<node>', '<script', '30'];
+    // eslint-disable-next-line @typescript-eslint/no-require-imports -- must load after console.log is captured
     require('../golden-master-text-test.ts');
-       
+
     expect(gameConsoleOutput).toMatchSnapshot();
   });
-
 });
