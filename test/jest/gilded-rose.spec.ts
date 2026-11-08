@@ -98,4 +98,22 @@ describe('Gilded Rose', () => {
       expect(updatedPass(5, 48).quality).toBe(50);
     });
   });
+
+  describe('Fine Aging Items', () => {
+    function updatedBrie(sellIn: number, quality: number) {
+      const brie = new Item('Aged Brie', sellIn, quality);
+
+      new GildedRose([brie]).updateQuality();
+
+      return brie;
+    }
+
+    it('lowers sellIn by 1', () => {
+      expect(updatedBrie(2, 0).sellIn).toBe(1);
+    });
+
+    it('lowers sellIn below 0 once the Sell By Date has passed', () => {
+      expect(updatedBrie(0, 0).sellIn).toBe(-1);
+    });
+  });
 });
