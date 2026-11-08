@@ -28,19 +28,17 @@ class EventTicketItem {
       return;
     }
 
-    if (this.item.quality < 50) {
-      this.item.quality = this.item.quality + 1
-      if (sellIn < 11) {
-        if (this.item.quality < 50) {
-          this.item.quality = this.item.quality + 1
-        }
-      }
-      if (sellIn < 6) {
-        if (this.item.quality < 50) {
-          this.item.quality = this.item.quality + 1
-        }
-      }
+    this.item.quality = Math.min(50, this.item.quality + this.anticipation(sellIn));
+  }
+
+  private anticipation(sellIn: number) {
+    if (sellIn < 6) {
+      return 3;
     }
+    if (sellIn < 11) {
+      return 2;
+    }
+    return 1;
   }
 }
 
