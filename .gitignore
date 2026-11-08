@@ -9,4 +9,3 @@ app/**/*.js.map
 test/**/*.js
 test/**/*.js.map
 coverage
-package-lock.json
