@@ -25,8 +25,6 @@ npm run test:jest:watch
 
 ## Run the TextTest fixture from the Command-Line
 
-_You may need to install `ts-node`_
-
 ```sh
 npx ts-node test/golden-master-text-test.ts
 ```
@@ -48,6 +46,26 @@ There are instructions in the [TextTest Readme](texttests/README.md) for setting
 ```
 
 TextTest doesn't run on the newest Python releases, so the script picks a Python that can run it. Set `PYTHON` to choose one yourself.
+
+`texttests/ThirtyDays/stdout.gr` differs from the upstream kata on four `Conjured Mana Cake` lines. Upstream records the original code, where Conjured Items aren't implemented.
+
+
+## Adding a new kind of Item
+
+Each kind of Item lives in its own file under `app/kinds/`, and registers itself with the `Catalog`.
+
+- **Another Item of an existing kind:** add its name to that kind's `ITEM_NAMES`. Conjured Items are the exception: any name starting with `Conjured ` is one.
+- **A new kind:** add a file with a class that takes the `Item` in its constructor, has a static `handles(item)` and an `update()` that returns the `Item`, and calls `Catalog.register`. Then import the file in `app/kinds/index.ts`.
+
+The first registered kind that handles an Item wins, and anything no kind handles is a Normal Item. Don't change the `Item` class or the `items` property, as the requirements explain.
+
+
+## Project docs
+
+- [Requirements](GildedRoseRequirements.md)
+- [Contributing](CONTRIBUTING.md)
+- [Glossary](GLOSSARY.md)
+- [Architecture decisions](docs/adr/)
 
 
 ## Acceptance testing
