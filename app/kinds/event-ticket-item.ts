@@ -1,11 +1,13 @@
 import { Catalog } from '../catalog';
 import type { Item } from '../gilded-rose';
 
+const ITEM_NAMES = ['Backstage passes to a TAFKAL80ETC concert'];
+
 class EventTicketItem {
   constructor(private readonly item: Item) {}
 
   static handles(item: Item) {
-    return item.name == 'Backstage passes to a TAFKAL80ETC concert';
+    return ITEM_NAMES.includes(item.name);
   }
 
   update() {
