@@ -86,7 +86,7 @@ describe('Gilded Rose', () => {
       expect(updatedPass(-1, 0).quality).toBe(0);
     });
 
-    it('stays at 50 quality with more than 10 days left', () => {
+    it('maxes out quality at 50 with more than 10 days left', () => {
       expect(updatedPass(11, 50).quality).toBe(50);
     });
 
