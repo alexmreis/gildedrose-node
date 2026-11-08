@@ -10,6 +10,14 @@ Install dependencies
 npm install
 ```
 
+## Compile
+
+```sh
+npm run compile
+```
+
+The compiled JavaScript goes in `dist/`. You can run it with `node dist/test/golden-master-text-test.js`.
+
 ## Run the unit tests from the Command-Line
 
 ```sh
