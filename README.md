@@ -47,3 +47,12 @@ There are instructions in the [TextTest Readme](../texttests/README.md) for sett
     interpreter:python
 
 
+## Acceptance testing
+
+The author has visited the Gilded Rose and taste tested the inventory as part of acceptance testing during the WoW Forever launch weekend.
+
+![The Gilded Rose inn sign in the Stormwind Trade District](docs/images/gilded-rose-exterior.jpg)
+
+![Browsing Innkeeper Allison's inventory at the Gilded Rose](docs/images/gilded-rose-inventory.jpg)
+
+
