@@ -20,21 +20,23 @@ class EventTicketItem {
   constructor(private readonly item: Item) {}
 
   update() {
+    const sellIn = this.item.sellIn;
+    this.item.sellIn = sellIn - 1;
+
     if (this.item.quality < 50) {
       this.item.quality = this.item.quality + 1
-      if (this.item.sellIn < 11) {
+      if (sellIn < 11) {
         if (this.item.quality < 50) {
           this.item.quality = this.item.quality + 1
         }
       }
-      if (this.item.sellIn < 6) {
+      if (sellIn < 6) {
         if (this.item.quality < 50) {
           this.item.quality = this.item.quality + 1
         }
       }
     }
-    this.item.sellIn = this.item.sellIn - 1;
-    if (this.item.sellIn < 0) {
+    if (sellIn <= 0) {
       this.item.quality = this.item.quality - this.item.quality
     }
   }
