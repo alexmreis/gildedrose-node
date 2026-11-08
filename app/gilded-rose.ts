@@ -10,6 +10,12 @@ export class Item {
   }
 }
 
+class LegendaryItem {
+  constructor(private readonly item: Item) {}
+
+  update() {}
+}
+
 export class GildedRose {
   items: Array<Item>;
 
