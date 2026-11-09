@@ -1,6 +1,6 @@
 import { useState, type KeyboardEvent } from 'react';
 import type { Item } from '../../app/gilded-rose';
-import { advanceDays, eventTicketBecameWorthless, startingStock } from './inn';
+import { advanceDays, eventTicketBecameWorthless, startingStock, subjectOf } from './inn';
 import { Inventory } from './Inventory';
 import { chooseLine, type Line, type Moment } from './lines';
 import type { Sound } from './sound';
@@ -12,6 +12,7 @@ export function App({ sound, random = Math.random }: { sound: Sound; random?: ()
   const [previousItems, setPreviousItems] = useState<Item[] | null>(null);
   const [day, setDay] = useState(0);
   const [muted, setMuted] = useState(false);
+  const [showingName, setShowingName] = useState(false);
 
   const say = (moment: Moment) => {
     const spoken = chooseLine(moment, line?.id, random);
@@ -69,7 +70,16 @@ export function App({ sound, random = Math.random }: { sound: Sound; random?: ()
   return (
     <main className="inn" tabIndex={-1} onKeyDown={closeOnEscape}>
       <div className="stage">
-        <button className="allison" aria-label="Talk to Innkeeper Allison" onClick={talkToAllison} />
+        <button
+          className="allison"
+          aria-label="Talk to Innkeeper Allison"
+          onClick={talkToAllison}
+          onMouseEnter={() => setShowingName(true)}
+          onMouseLeave={() => setShowingName(false)}
+          onFocus={() => setShowingName(true)}
+          onBlur={() => setShowingName(false)}
+        />
+        {showingName && <span className="nameplate">Innkeeper Allison</span>}
         <p role="status" className="bubble">
           {line.text}
         </p>
@@ -82,6 +92,7 @@ export function App({ sound, random = Math.random }: { sound: Sound; random?: ()
           items={items}
           previousItems={previousItems}
           day={day}
+          onAskAbout={item => say(subjectOf(item.name))}
           onAdvance={advance}
           onStartOver={startOver}
           onClose={() => setInventoryOpen(false)}

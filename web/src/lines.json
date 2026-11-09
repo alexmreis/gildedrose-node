@@ -1,20 +1,162 @@
 {
-  "greeting": [{ "id": "greeting", "text": "Hello. Well met. Hi there. What can I do for you? Can I help you?" }],
+  "greeting": [
+    {
+      "id": "greeting-1",
+      "text": "Hello."
+    },
+    {
+      "id": "greeting-2",
+      "text": "Well met."
+    },
+    {
+      "id": "greeting-3",
+      "text": "Hi there."
+    },
+    {
+      "id": "greeting-4",
+      "text": "What can I do for you?"
+    },
+    {
+      "id": "greeting-5",
+      "text": "Need help?"
+    },
+    {
+      "id": "greeting-6",
+      "text": "Can I help you?"
+    }
+  ],
   "click": [
-    { "id": "click-1", "text": "Welcome in, love. Mind the step, and the cheese." },
-    { "id": "click-2", "text": "Everything on the shelf is for sale. Some of it even wants to be." },
-    { "id": "click-3", "text": "Have a look through the stock. I keep it honest, mostly." },
-    { "id": "click-4", "text": "Anything catch your eye? Besides the smell of the Brie?" }
+    {
+      "id": "click-1",
+      "text": "Welcome in, love. Mind the step, and the cheese."
+    },
+    {
+      "id": "click-2",
+      "text": "Everything on the shelf is for sale. Some of it even wants to be."
+    },
+    {
+      "id": "click-3",
+      "text": "Have a look through the stock. I keep it honest, mostly."
+    },
+    {
+      "id": "click-4",
+      "text": "Anything catch your eye? Besides the smell of the Brie?"
+    }
   ],
   "advance": [
-    { "id": "advance-1", "text": "There, that's the days gone. The shelves look older already." },
-    { "id": "advance-2", "text": "Time flies when you're watching stock spoil." },
-    { "id": "advance-3", "text": "All done. The Brie's delighted. Nobody else is." },
-    { "id": "advance-4", "text": "Another stretch behind us, and not one item sold. Lovely." }
+    {
+      "id": "advance-1",
+      "text": "There, that's the days gone. The shelves look older already."
+    },
+    {
+      "id": "advance-2",
+      "text": "Time flies when you're watching stock spoil."
+    },
+    {
+      "id": "advance-3",
+      "text": "All done. The Brie's delighted. Nobody else is."
+    },
+    {
+      "id": "advance-4",
+      "text": "Another stretch behind us, and not one item sold. Lovely."
+    }
   ],
   "worthless": [
-    { "id": "worthless-1", "text": "That concert's been and gone, love. Those passes are kindling now." },
-    { "id": "worthless-2", "text": "Well, those tickets won't be getting anyone through any door." },
-    { "id": "worthless-3", "text": "The music's over, and so is the value of those passes." }
+    {
+      "id": "worthless-1",
+      "text": "That concert's been and gone, love. Those passes are kindling now."
+    },
+    {
+      "id": "worthless-2",
+      "text": "Well, those tickets won't be getting anyone through any door."
+    },
+    {
+      "id": "worthless-3",
+      "text": "The music's over, and so is the value of those passes."
+    }
+  ],
+  "vest": [
+    {
+      "id": "vest-1",
+      "text": "The plus five is mostly confidence, love."
+    },
+    {
+      "id": "vest-2",
+      "text": "It's very nimble. Left the last owner without warning."
+    },
+    {
+      "id": "vest-3",
+      "text": "Loses a little every day. Don't we all?"
+    }
+  ],
+  "brie": [
+    {
+      "id": "brie-1",
+      "text": "The only thing in this inn improving with age. I've checked."
+    },
+    {
+      "id": "brie-2",
+      "text": "The older it gets, the more it's worth. I've asked it for advice."
+    },
+    {
+      "id": "brie-3",
+      "text": "Leave it long enough and it'll be running the place."
+    }
+  ],
+  "elixir": [
+    {
+      "id": "elixir-1",
+      "text": "One sip and you'll feel quick as a mongoose. Bitten, too, I shouldn't wonder."
+    },
+    {
+      "id": "elixir-2",
+      "text": "Drink it soon, love. It's past caring, but you shouldn't be."
+    },
+    {
+      "id": "elixir-3",
+      "text": "Tastes like regret with a hint of honey."
+    }
+  ],
+  "maul": [
+    {
+      "id": "maul-1",
+      "text": "Never sold it, never will. It won't let me."
+    },
+    {
+      "id": "maul-2",
+      "text": "Quality eighty, every single day. I find that a bit smug."
+    },
+    {
+      "id": "maul-3",
+      "text": "Mind your fingers. And your eyebrows."
+    }
+  ],
+  "ticket": [
+    {
+      "id": "ticket-1",
+      "text": "The closer the show, the dearer it gets. Then it's a bookmark."
+    },
+    {
+      "id": "ticket-2",
+      "text": "Best seats in the house, until about one minute after the encore."
+    },
+    {
+      "id": "ticket-3",
+      "text": "Nobody's told me who's playing. Nobody can pronounce it."
+    }
+  ],
+  "cake": [
+    {
+      "id": "cake-1",
+      "text": "Twice as quick to spoil, and it was never that good to start with."
+    },
+    {
+      "id": "cake-2",
+      "text": "Conjured this morning. Regretted by noon."
+    },
+    {
+      "id": "cake-3",
+      "text": "It's mostly sparkle, love. There's no cake to speak of."
+    }
   ]
 }

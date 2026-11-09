@@ -27,3 +27,18 @@ export function eventTicketBecameWorthless(before: Item[], after: Item[]) {
       item.name === 'Backstage passes to a TAFKAL80ETC concert' && item.quality === 0 && before[index].quality > 0,
   );
 }
+
+export type ItemSubject = 'vest' | 'brie' | 'elixir' | 'maul' | 'ticket' | 'cake';
+
+const SUBJECTS: Record<string, ItemSubject> = {
+  '+5 Dexterity Vest': 'vest',
+  'Aged Brie': 'brie',
+  'Elixir of the Mongoose': 'elixir',
+  'Sulfuras, Hand of Ragnaros': 'maul',
+  'Backstage passes to a TAFKAL80ETC concert': 'ticket',
+  'Conjured Mana Cake': 'cake',
+};
+
+export const subjectOf = (name: string) => SUBJECTS[name];
+
+export const iconFor = (name: string) => `/images/items/${subjectOf(name)}.png`;

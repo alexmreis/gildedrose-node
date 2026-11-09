@@ -1,6 +1,6 @@
 /** @jest-environment jsdom */
 import '@testing-library/jest-dom';
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { App } from '../src/App';
 import type { Sound } from '../src/sound';
@@ -15,14 +15,24 @@ const enterTheInn = async (sound = fakeSound()) => {
 };
 
 describe('entering the inn', () => {
-  it('starts the music and greets the visitor', async () => {
+  it('starts the music and greets the visitor with one greeting', async () => {
     const { sound } = await enterTheInn();
 
     expect(sound.startMusic).toHaveBeenCalledTimes(1);
-    expect(sound.speak).toHaveBeenCalledWith('greeting');
-    expect(screen.getByRole('status')).toHaveTextContent(
-      'Hello. Well met. Hi there. What can I do for you? Can I help you?',
-    );
+    expect(sound.speak).toHaveBeenCalledTimes(1);
+    expect(sound.speak).toHaveBeenCalledWith('greeting-1');
+    expect(screen.getByRole('status')).toHaveTextContent(/^Hello\.$/);
+  });
+
+  it('picks the greeting at random', async () => {
+    const sound = fakeSound();
+    const user = userEvent.setup();
+    render(<App sound={sound} random={() => 0.99} />);
+
+    await user.click(screen.getByRole('button', { name: 'Enter the inn' }));
+
+    expect(sound.speak).toHaveBeenCalledWith('greeting-6');
+    expect(screen.getByRole('status')).toHaveTextContent(/^Can I help you\?$/);
   });
 
   it('plays nothing until the visitor enters', () => {
@@ -41,6 +51,27 @@ const talkToAllison = (user: ReturnType<typeof userEvent.setup>) =>
 const inventory = () => screen.queryByRole('dialog', { name: 'Inventory' });
 
 describe('talking to Allison', () => {
+  it('shows her name only while she is hovered', async () => {
+    const { user } = await enterTheInn();
+    const allison = screen.getByRole('button', { name: 'Talk to Innkeeper Allison' });
+    expect(screen.queryByText('Innkeeper Allison')).not.toBeInTheDocument();
+
+    await user.hover(allison);
+    expect(screen.getByText('Innkeeper Allison')).toBeInTheDocument();
+
+    await user.unhover(allison);
+    expect(screen.queryByText('Innkeeper Allison')).not.toBeInTheDocument();
+  });
+
+  it('shows her name while she has keyboard focus', async () => {
+    const { user } = await enterTheInn();
+
+    await user.tab();
+
+    expect(screen.getByRole('button', { name: 'Talk to Innkeeper Allison' })).toHaveFocus();
+    expect(screen.getByText('Innkeeper Allison')).toBeInTheDocument();
+  });
+
   it('keeps the Inventory closed until she is clicked', async () => {
     await enterTheInn();
 
@@ -73,7 +104,7 @@ describe('talking to Allison', () => {
     await talkToAllison(user);
 
     const names = screen.getAllByRole('button', { name: /Vest|Brie|Elixir|Sulfuras|Backstage|Conjured/ });
-    expect(names.map(row => row.textContent)).toEqual([
+    expect(names.map(row => row.getAttribute('aria-label'))).toEqual([
       '+5 Dexterity Vest',
       'Aged Brie',
       'Elixir of the Mongoose',
@@ -86,7 +117,7 @@ describe('talking to Allison', () => {
     ]);
   });
 
-  it('closes the Inventory with Escape while an Item has focus', async () => {
+  it('closes the Inventory with Escape while a slot has focus', async () => {
     const { user } = await enterTheInn();
     await talkToAllison(user);
     act(() => rowsNamed(/Brie/)[0].focus());
@@ -104,6 +135,23 @@ describe('talking to Allison', () => {
     await user.keyboard('{Escape}');
 
     expect(inventory()).not.toBeInTheDocument();
+  });
+
+  it('arranges the Items in a bag of sixteen slots', async () => {
+    const { user } = await enterTheInn();
+
+    await talkToAllison(user);
+
+    expect(within(inventory()!).getAllByRole('listitem')).toHaveLength(16);
+  });
+
+  it('shows an icon for each Item', async () => {
+    const { user } = await enterTheInn();
+
+    await talkToAllison(user);
+
+    expect(rowsNamed(/Brie/)[0].querySelector('img')).toHaveAttribute('src', '/images/items/brie.png');
+    expect(rowsNamed(/Sulfuras/)[1].querySelector('img')).toHaveAttribute('src', '/images/items/maul.png');
   });
 
   it('closes the Inventory with the close button', async () => {
@@ -193,6 +241,45 @@ const expectDetails = async (user: ReturnType<typeof userEvent.setup>, row: HTML
   await user.unhover(row);
 };
 
+describe('asking Allison about an Item', () => {
+  it('has her remark on the Item when its slot is clicked', async () => {
+    const { user, sound } = await openInventory();
+
+    await user.click(rowsNamed(/Brie/)[0]);
+
+    expect(sound.speak).toHaveBeenLastCalledWith('brie-1');
+    expect(screen.getByRole('status')).toHaveTextContent('The only thing in this inn improving with age.');
+  });
+
+  it('gives a different remark on the next click', async () => {
+    const { user, sound } = await openInventory();
+
+    await user.click(rowsNamed(/Brie/)[0]);
+    await user.click(rowsNamed(/Brie/)[0]);
+
+    expect(sound.speak).toHaveBeenLastCalledWith('brie-2');
+  });
+
+  it('has remarks that match each kind of Item', async () => {
+    const { user, sound } = await openInventory();
+
+    await user.click(rowsNamed(/Sulfuras/)[1]);
+    expect(sound.speak).toHaveBeenLastCalledWith('maul-1');
+
+    await user.click(rowsNamed(/Backstage/)[2]);
+    expect(sound.speak).toHaveBeenLastCalledWith('ticket-1');
+  });
+
+  it('stays quiet when an Item is only hovered', async () => {
+    const { user, sound } = await openInventory();
+    sound.speak.mockClear();
+
+    await user.hover(rowsNamed(/Brie/)[0]);
+
+    expect(sound.speak).not.toHaveBeenCalled();
+  });
+});
+
 describe('advancing days', () => {
   it('starts at Day 0', async () => {
     await openInventory();
@@ -226,8 +313,9 @@ describe('advancing days', () => {
     await advanceDays(user, '3');
     await advanceDays(user, '2');
 
-    expect(screen.getByText('Quality 17 → 15')).toBeInTheDocument();
-    expect(screen.queryByText('Quality 20 → 17')).not.toBeInTheDocument();
+    await user.hover(rowsNamed(/Vest/)[0]);
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Quality 17 → 15');
+    expect(screen.getByRole('tooltip')).not.toHaveTextContent('Quality 20 → 17');
   });
 
   it('shows no change for an Item whose Quality held', async () => {
@@ -235,7 +323,18 @@ describe('advancing days', () => {
 
     await advanceDays(user, '3');
 
-    expect(screen.queryByText('Quality 80 → 80')).not.toBeInTheDocument();
+    await user.hover(rowsNamed(/Sulfuras/)[0]);
+    expect(screen.getByRole('tooltip')).not.toHaveTextContent('→');
+    expect(within(rowsNamed(/Sulfuras/)[0]).queryByText(/^[+−]/)).not.toBeInTheDocument();
+  });
+
+  it('marks each slot with how far its Quality moved', async () => {
+    const { user } = await openInventory();
+
+    await advanceDays(user, '3');
+
+    expect(within(rowsNamed(/Vest/)[0]).getByText('−3')).toBeInTheDocument();
+    expect(within(rowsNamed(/Brie/)[0]).getByText('+4')).toBeInTheDocument();
   });
 
   it('has Allison remark on the advance', async () => {
@@ -299,7 +398,7 @@ describe('starting over', () => {
     await user.click(screen.getByRole('button', { name: 'Start over' }));
 
     expect(screen.getByText('Day 0')).toBeInTheDocument();
-    expect(screen.queryByText('Quality 20 → 17')).not.toBeInTheDocument();
+    expect(within(rowsNamed(/Vest/)[0]).queryByText('−3')).not.toBeInTheDocument();
     expect(inventory()).toBeInTheDocument();
     await expectDetails(user, rowsNamed(/Vest/)[0], 'Sell In 10', 'Quality 20');
   });
