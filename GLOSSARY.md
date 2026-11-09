@@ -26,6 +26,18 @@ _Avoid_: Value, price
 The end-of-day change applied to every Item's Sell In and Quality.
 _Avoid_: Tick, quality update
 
+**Day**:
+The number of Daily Updates applied since the inn opened, starting at 0.
+_Avoid_: Turn, date
+
+**Inventory**:
+All the Items the inn currently holds.
+_Avoid_: Ledger, item list
+
+**Innkeeper**:
+Allison, the friendly person who runs the inn and shows visitors its Inventory.
+_Avoid_: Vendor, NPC
+
 **Catalog**:
 The inn's record of the kinds of Item it carries.
 _Avoid_: Registry, factory, decorators
