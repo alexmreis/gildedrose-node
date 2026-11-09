@@ -26,6 +26,16 @@ The compiled JavaScript goes in `dist/`. The kata has no application of its own,
 npx ts-node test/golden-master-text-test.ts 30
 ```
 
+## Web app
+
+Visit the inn in your browser and talk to Innkeeper Allison:
+
+```sh
+npm run web
+```
+
+`npm run web:typecheck` typechecks it and `npm run web:build` builds it. Her lines live in `web/src/lines.json`. After editing them, run `npm run web:voice` to regenerate the clips with Kokoro (needs [uv](https://docs.astral.sh/uv/)). Asset licences are in [web/CREDITS.md](web/CREDITS.md).
+
 ## Test
 
 ```sh

@@ -8,26 +8,43 @@
     "test:jest:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
     "lint": "eslint .",
-    "format": "prettier --write app test jest.config.ts eslint.config.mjs",
-    "format:check": "prettier --check app test jest.config.ts eslint.config.mjs",
+    "format": "prettier --write app test web jest.config.ts eslint.config.mjs",
+    "format:check": "prettier --check app test web jest.config.ts eslint.config.mjs",
     "prepare": "husky",
-    "test": "jest"
+    "test": "jest",
+    "web": "vite web",
+    "web:build": "vite build web",
+    "web:typecheck": "tsc -p web",
+    "web:voice": "uv run web/scripts/generate-voice.py"
   },
   "license": "MIT",
   "private": true,
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
     "@types/jest": "^29.4.0",
     "@types/node": "^18.14.0",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
     "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "jest": "^29.4.3",
+    "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^17.6.0",
     "prettier": "^3.9.10",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^4.4.4",
-    "typescript-eslint": "^8.72.1"
+    "typescript-eslint": "^8.72.1",
+    "vite": "^6.4.5"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

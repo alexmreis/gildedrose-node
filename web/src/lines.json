@@ -1,0 +1,20 @@
+{
+  "greeting": [{ "id": "greeting", "text": "Hello. Well met. Hi there. What can I do for you? Can I help you?" }],
+  "click": [
+    { "id": "click-1", "text": "Welcome in, love. Mind the step, and the cheese." },
+    { "id": "click-2", "text": "Everything on the shelf is for sale. Some of it even wants to be." },
+    { "id": "click-3", "text": "Have a look through the stock. I keep it honest, mostly." },
+    { "id": "click-4", "text": "Anything catch your eye? Besides the smell of the Brie?" }
+  ],
+  "advance": [
+    { "id": "advance-1", "text": "There, that's the days gone. The shelves look older already." },
+    { "id": "advance-2", "text": "Time flies when you're watching stock spoil." },
+    { "id": "advance-3", "text": "All done. The Brie's delighted. Nobody else is." },
+    { "id": "advance-4", "text": "Another stretch behind us, and not one item sold. Lovely." }
+  ],
+  "worthless": [
+    { "id": "worthless-1", "text": "That concert's been and gone, love. Those passes are kindling now." },
+    { "id": "worthless-2", "text": "Well, those tickets won't be getting anyone through any door." },
+    { "id": "worthless-3", "text": "The music's over, and so is the value of those passes." }
+  ]
+}
